@@ -1,0 +1,21 @@
+def is_palindrome(n):            # filter打印回文数
+
+    def nat_num(x=0):
+        while x < n:
+            yield x
+            x += 1
+
+    def turn_around(string):
+        a = ""
+        b = str(string)
+        for i in range(1,len(b)+1):
+            a += b[-i]
+        return a
+
+    def is_aroundnum(num):
+        return num == int(turn_around(num))
+
+    nat = nat_num()
+    return filter(is_aroundnum, nat)
+
+print(list(is_palindrome(200)))
